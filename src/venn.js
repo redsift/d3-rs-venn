@@ -4,17 +4,12 @@ import { select } from 'd3-selection';
 import { html as svg } from '@redsift/d3-rs-svg';
 import { 
   presentation10,
-  brand,
   display,
-  dashes,
-  fonts,
-  widths
 } from '@redsift/d3-rs-theme';
 
 
 import { venn, normalizeSolution, scaleSolution } from './layout';
-import { intersectionArea, distance, getCenter } from './circleintersection';
-import { nelderMead } from '../node_modules/fmin/index.js';
+import { intersectionArea } from './circleintersection';
 
 const DEFAULT_SIZE = 400;
 const DEFAULT_ASPECT = 0.5;
@@ -105,7 +100,7 @@ export default function chart(id) {
     selection.each(function() {
       let node = select(this);  
 
-      let data = node.datum() || {};
+      let data = node.datum() || [];
 
       let sh = height || Math.round(width * DEFAULT_ASPECT);
       
@@ -215,7 +210,7 @@ export default function chart(id) {
     return id;
   };
 
-  _impl.defaultStyle = (_theme, _width) => `
+  _impl.defaultStyle = () => `
                   ${_impl.self()} { 
                     shape-rendering: geometricprecision;
                   }

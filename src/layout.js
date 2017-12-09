@@ -1,5 +1,4 @@
-import {nelderMead, bisect, conjugateGradient, zeros, zerosM, norm2,
-    scale} from '../node_modules/fmin/index.js';
+import {nelderMead, bisect, conjugateGradient, zeros, zerosM, norm2, scale} from '../node_modules/fmin/index.js';
 import {intersectionArea, circleOverlap, circleCircleIntersection, distance} from './circleintersection';
 
 /** given a list of set objects, and their corresponding overlaps.
@@ -27,10 +26,8 @@ export function venn(areas, parameters) {
     }
 
     // optimize initial layout from our loss function
-    var totalFunctionCalls = 0;
     var solution = nelderMead(
         function(values) {
-            totalFunctionCalls += 1;
             var current = {};
             for (var i = 0; i < setids.length; ++i) {
                 var setid = setids[i];
@@ -319,6 +316,10 @@ export function greedyLayout(areas) {
         circles[index].x = point.x;
         circles[index].y = point.y;
         positioned[index] = true;
+    }
+
+    if (mostOverlapped.length == 0) {
+        return [];
     }
 
     // add most overlapped set at (0,0)
@@ -638,7 +639,7 @@ export function scaleSolution(solution, width, height, padding) {
 
     if ((xRange.max == xRange.min) ||
         (yRange.max == yRange.min)) {
-        console.log("not scaling solution: zero size detected");
+        // console.log("not scaling solution: zero size detected");
         return solution;
     }
 

@@ -28,6 +28,16 @@
     <script>
 
     'use strict';
+
+    d3.select('#elm').call(d3_rs_venn.html('blank').theme('dark'));
+
+    d3.select('#elm').datum(
+      [ {sets: ['A'], size: 14},
+        {sets: ['B'], size: 6},
+        {sets: ['A','B'], size: 0}
+      ]
+    ).call(d3_rs_venn.html('simple').theme('dark'));
+
     var venn = d3_rs_venn.html('demo');
 
     var data = [ {sets: ['A'], size: 14},
