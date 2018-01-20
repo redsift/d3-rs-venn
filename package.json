@@ -1,6 +1,6 @@
 {
   "name": "@redsift/d3-rs-venn",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Generates venn charts using D3v4.",
   "keywords": [
     "venn",
@@ -30,7 +30,7 @@
     "prepublish": "npm run build"
   },
   "dependencies": {
-    "@redsift/d3-rs-svg": "~0.3.0",
+    "@redsift/d3-rs-svg": "~0.4.0",
     "@redsift/d3-rs-theme": "~0.4.2",
     "fmin": "0.0.2"
   },
